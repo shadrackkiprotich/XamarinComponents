@@ -4,7 +4,7 @@
     
   -->
     <PropertyGroup>
-        <AssemblyName>Xamarin.Grpc.Core</AssemblyName>
+        <AssemblyName>Xamarin.Grpc.Android</AssemblyName>
 
         <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
         <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -16,7 +16,7 @@
         <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
          
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>        
-        <RootNamespace>Xamarin.Grpc.Core</RootNamespace>
+        <RootNamespace>Xamarin.Grpc.Android</RootNamespace>
         <TargetFramework>monoandroid81</TargetFramework>
     </PropertyGroup>
 
@@ -30,14 +30,14 @@
         nuget packaging
         -->
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageId>Xamarin.Grpc.Core</PackageId>
+        <PackageId>Xamarin.Grpc.Android</PackageId>
         <PackageVersion>1.23.0</PackageVersion>
-        <Title>Xamarin.Grpc.Core</Title>
+        <Title>Xamarin.Grpc.Android</Title>
         <Summary>
-            Google GRPC Core bindings for Xamarin
+            Google GRPC Android bindings for Xamarin
         </Summary>
         <Description>
-            Bindings for Google's GRPC Core package (Google Play Services dependency)
+            Bindings for Google's GRPC Android package (Google Play Services dependency)
         </Description>
         <Owners>Microsoft</Owners>
         <Authors>Microsoft</Authors>
@@ -51,12 +51,24 @@
         <RepositoryUrl>
         https://go.microsoft.com/fwlink/?linkid=2009337            
         </RepositoryUrl>
-        <PackageReleaseNotes>1.23.0</PackageReleaseNotes>
-        <PackageTags>xamarin, android, bindings, google, grpc, core </PackageTags>
+        <PackageReleaseNotes>1.23.0 Initial bindings</PackageReleaseNotes>
+        <PackageTags>xamarin, android, bindings, google, grpc, android </PackageTags>
         <PackOnBuild>true</PackOnBuild>
     </PropertyGroup>
 
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+      <IntermediateOutputPath>obj\Debug</IntermediateOutputPath>
+      <OutputPath>bin\Debug</OutputPath>
+      <DefineConstants>TRACE;_;_8_1;DEBUG;MONOANDROID;MONOANDROID9_0</DefineConstants>
+      <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <IntermediateOutputPath>obj\Release</IntermediateOutputPath>
+      <OutputPath>bin\Release</OutputPath>
+      <DefineConstants>TRACE;RELEASE;_;_8_1</DefineConstants>
+      <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    </PropertyGroup>
     <ItemGroup>
         <!--
         -->
@@ -82,12 +94,9 @@
     <None Remove="Jars\AboutJars.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Additions\LazyStringArrayList.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedJar Include="..\..\externals\android\grpc-core-1.23.0.jar">
-      <Link>Jars\grpc-core-1.23.0.jar</Link>
-    </EmbeddedJar>
+    <LibraryProjectZip Include="..\..\externals\android\grpc-android-1.23.0.aar">
+      <Link>Jars\grpc-android-1.23.0.aar</Link>
+    </LibraryProjectZip>
   </ItemGroup>
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 
