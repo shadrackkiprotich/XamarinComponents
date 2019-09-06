@@ -52,6 +52,7 @@
         https://go.microsoft.com/fwlink/?linkid=2009337            
         </RepositoryUrl>
         <RequireLicenceAcceptance>true</RequireLicenceAcceptance>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageReleaseNotes>1.23.0</PackageReleaseNotes>
         <PackageTags>xamarin, android, bindings, google, grpc, protobuf.lite </PackageTags>
         <PackOnBuild>true</PackOnBuild>
